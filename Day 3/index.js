@@ -2,7 +2,7 @@ const express = require('express')
 const port = 2000
 const app = express()
 let students = []
-
+  
 app.set('view engine','ejs')
 app.use(express.urlencoded())
 
@@ -22,5 +22,5 @@ app.get('/delete',(req,res)=>{
 })
 
 app.listen(port,err=>{
-    err ? console.log (err):console.log("Hi Server started")
-})
+    err ? console.log (err):console.log(`Hi, Server started on: http://localhost:${port} `)
+})  
