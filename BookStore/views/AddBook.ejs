@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .form-group img {
+            display: block;
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            background: #5a67d8;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .form-group button:hover {
+            background: #434190;
+        }
+        .form-group .cancel {
+            background: #e53e3e;
+            margin-left: 10px;
+        }
+        .form-group .cancel:hover {
+            background: #c53030;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Book</h1>
+        <form action="/Add" method="post">
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                <input id="image" name="image" placeholder="Enter the Image URL" oninput="updateImage()" />
+                <img id="preview" src="" alt="">
+            </div>
+            <div class="form-group">
+                <label for="title">Book Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter the book title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" placeholder="Enter the author's name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" placeholder="Enter the book price" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter description of the book"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Book</button>
+                <button type="reset">Reset</button>
+                <a href="/"><button type="button" class="cancel">Cancel</button></a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function updateImage() {
+            const imageInput = document.getElementById('image');
+            const preview = document.getElementById('preview');
+            preview.src = imageInput.value;
+        }
+    </script>
+</body>
+</html>
