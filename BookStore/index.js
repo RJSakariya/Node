@@ -19,8 +19,6 @@ app.post('/Add', (req, res) => {
 })
 app.get('/EditBook/:id', (req, res) => {
     const singleBook = Books.find((book)=>book.id === req.params.id)
-    console.log(singleBook);
-    
     res.render('EditBook', { singleBook })
     res.end()
 })
