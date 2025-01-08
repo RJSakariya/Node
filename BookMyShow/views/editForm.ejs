@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Movie</title>
+    <style>
+        form {
+            background: #ffffff;
+            height: fit-content;
+            max-height: 80vh;
+            min-width: 300px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            z-index: 100;
+            font-family: Arial, sans-serif;
+            overflow: scroll;
+        }
+
+        form::-webkit-scrollbar {
+            display: none;
+        }
+
+        .onAdForm {
+            display: flex;
+        }
+
+        .onMovieForm {
+            display: flex;
+        }
+
+        form h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="file"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #e74162;
+            outline: none;
+        }
+
+        .form-group input[type="date"] {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #555;
+            padding: 10px 12px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .file {
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            background-color: #f5f5f5;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .form-buttons .btn {
+            min-width: 120px;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #e74162;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-buttons .btn:hover {
+            background-color: #d63a58;
+        }
+
+        .form-buttons .btn:active {
+            background-color: #c3324e;
+        }
+
+        .form-buttons .btn[type="reset"] {
+            background-color: #777;
+        }
+
+        .form-buttons .btn[type="reset"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/updateMovie" method="post" class="movieForm" enctype="multipart/form-data">
+        <h4>Update Movie</h4>
+        <input type="text" value="<%= singleMovie.id%>" name="id" hidden>
+        <div class="form-group">
+            <label for="image">Upload Movie Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="bgImage">Upload Background Image</label>
+            <input type="file" id="bgImage" name="bgImage" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="name">Movie Name</label>
+            <input type="text" value="<%=singleMovie.name%>" id="name" name="name" placeholder="Enter movie name"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="rate">Rating</label>
+            <input type="number" value="<%=singleMovie.rate%>" id="rate" name="rate" step="0.1"
+                placeholder="Enter rating (e.g., 8.5)" required>
+        </div>
+        <div class="form-group">
+            <label for="formate">Format</label>
+            <input type="text" value="<%=singleMovie.formate%>" id="formate" name="formate"
+                placeholder="Enter format (e.g., 2D, 3D)" required>
+        </div>
+        <div class="form-group">
+            <label for="language">Language</label>
+            <input type="text" value="<%=singleMovie.language%>" id="language" name="language"
+                placeholder="Enter language (e.g., English, Hindi)" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" value="<%=singleMovie.duration%>" id="duration" name="duration"
+                placeholder="Enter duration (e.g., 2h 30m)" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" value="<%=singleMovie.category%>" id="category" name="category"
+                placeholder="Enter category (e.g., Action, Comedy)" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age Restriction</label>
+            <input type="text" value="<%=singleMovie.age%>" id="age" name="age"
+                placeholder="Enter age restriction (e.g., 13+, 18+)" required>
+        </div>
+        <div class="form-group">
+            <label for="release">Release Date</label>
+            <input type="date" value="<%=singleMovie.release%>" id="release" name="release" required>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="btn">Update</button>
+            <button type="reset" class="btn">Reset</button>
+        </div>
+    </form>
+</body>
+
+</html>

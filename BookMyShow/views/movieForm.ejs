@@ -1,0 +1,48 @@
+<div class="off-background movieform" onclick="closeMovieForm()"></div>
+<form action="/addNewMovie" method="post" class="movieForm" enctype="multipart/form-data">
+    <h4>Add New Movie</h4>
+    <div class="form-group">
+        <label for="image">Upload Movie Image</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <div class="form-group">
+        <label for="bgImage">Upload Background Image</label>
+        <input type="file" id="bgImage" name="bgImage" accept="image/*" required>
+    </div>
+    <div class="form-group">
+        <label for="name">Movie Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter movie name" required>
+    </div>
+    <div class="form-group">
+        <label for="rate">Rating</label>
+        <input type="number" id="rate" name="rate" step="0.1" placeholder="Enter rating (e.g., 8.5)" required>
+    </div>
+    <div class="form-group">
+        <label for="formate">Format</label>
+        <input type="text" id="formate" name="formate" placeholder="Enter format (e.g., 2D, 3D)" required>
+    </div>
+    <div class="form-group">
+        <label for="language">Language</label>
+        <input type="text" id="language" name="language" placeholder="Enter language (e.g., English, Hindi)" required>
+    </div>
+    <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" placeholder="Enter duration (e.g., 2h 30m)" required>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category" placeholder="Enter category (e.g., Action, Comedy)" required>
+    </div>
+    <div class="form-group">
+        <label for="age">Age Restriction</label>
+        <input type="text" id="age" name="age" placeholder="Enter age restriction (e.g., 13+, 18+)" required>
+    </div>
+    <div class="form-group">
+        <label for="release">Release Date</label>
+        <input type="date" id="release" name="release" required>
+    </div>
+    <div class="form-buttons">
+        <button type="submit" class="btn">Add</button>
+        <button type="reset" class="btn">Reset</button>
+    </div>
+</form>

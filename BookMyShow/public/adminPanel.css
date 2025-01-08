@@ -1,0 +1,262 @@
+.adSectionAdmin {
+    background: #ebebeb;
+    padding: 10px 0px;
+}
+
+.btn {
+    min-width: 120px;
+    background: #e74162;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.ads {
+    margin-top: 10px;
+    display: grid;
+    gap: 10px;
+}
+
+.ad {
+    height: fit-content;
+    width: 100%;
+    position: relative;
+}
+
+.ad img {
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.del {
+    min-width: 80px;
+    background: red;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+.edit {
+    min-width: 80px;
+    background: purple;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    z-index: 1;
+}
+
+.off-background {
+    width: 100vw;
+    height: 100vh;
+    background: #11111199;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    z-index: 99;
+    transition: .3s ease-in-out;
+}
+
+.on-background {
+    display: block;
+}
+
+form {
+    background: #ffffff;
+    height: fit-content;
+    max-height: 80vh;
+    min-width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    padding: 20px;
+    display: none;
+    z-index: 100;
+    font-family: Arial, sans-serif;
+    overflow: scroll;
+}
+
+form::-webkit-scrollbar {
+    display: none;
+}
+
+.onAdForm {
+    display: flex;
+}
+
+.onMovieForm {
+    display: flex;
+}
+
+form h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #e74162;
+    outline: none;
+}
+
+.form-group input[type="date"] {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #555;
+    padding: 10px 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.file {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.form-buttons .btn {
+    min-width: 120px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #e74162;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-buttons .btn:hover {
+    background-color: #d63a58;
+}
+
+.form-buttons .btn:active {
+    background-color: #c3324e;
+}
+
+.form-buttons .btn[type="reset"] {
+    background-color: #777;
+}
+
+.form-buttons .btn[type="reset"]:hover {
+    background-color: #555;
+}
+
+.movieSectionAdmin {
+    padding: 15px 0px;
+}
+
+.movies {
+    margin-top: 10px;
+}
+
+.movie {
+    height: 480px;
+    width: 100%;
+    position: relative;
+}
+
+.movie>.container {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    position: relative;
+}
+
+.movie>.container>img {
+    height: 390px;
+    width: 260px;
+    border-radius: 15px;
+}
+
+.movieBackground {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.movieBackground>div {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(90deg, #2b2b2b 35%, #111111a4);
+    position: absolute;
+}
+
+.movie>.movieBackground img {
+    z-index: -3;
+}
+
+.movie-card {
+    width: 100%;
+    padding: 20px;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-header {
+    padding-bottom: 10px;
+}
+
+.movie-title {
+    font-size: 28px;
+    color: white;
+    white-space: nowrap;
+}
+
+.movie-details p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #f7f7f7;
+}

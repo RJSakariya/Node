@@ -1,0 +1,60 @@
+<div class="movieSectionAdmin">
+    <div class="movies">
+        <div class="container">
+            <button onclick="openMovieForm()" class="btn" style="margin-bottom: 10px;">
+                Add New Movie
+            </button>
+        </div>
+        <div class="col-12 movies">
+            <% if (Movie.length> 0) { %>
+                <% Movie.map((el)=> { %>
+                    <div class="movie">
+                        <div class="container">
+                            <img src="<%= el.image %>" alt="image">
+                            <div class="movie-card">
+                                <div class="movie-header">
+                                    <h5 class="movie-title">
+                                        <%= el.name %>
+                                    </h5>
+                                </div>
+                                <div class="movie-details">
+                                    <p>
+                                        <%= el.rate %>
+                                    </p>
+                                    <p>
+                                        <%= el.formate %>
+                                    </p>
+                                    <p>
+                                        <%= el.language %>
+                                    </p>
+                                    <p>
+                                        <%= el.duration %>
+                                    </p>
+                                    <p>
+                                        <%= el.age %>
+                                    </p>
+                                    <p>
+                                        <%= el.release %>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button onclick="deleteMovie('<%= el.id %>')" class="btn del">
+                                Delete
+                            </button>
+                            <button onclick="editMovie('<%= el.id %>')" class="btn edit">
+                                Edit
+                            </button>
+                        </div>
+                        <div class="movieBackground">
+                            <div></div>
+                            <img src="<%= el.bgImage %>" alt="bgImage">
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No Movie found</p>
+                            <% } %>
+        </div>
+    </div>
+</div>

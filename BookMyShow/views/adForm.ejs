@@ -1,0 +1,12 @@
+<form action="/addNewAd" method="post" class="adForm" enctype="multipart/form-data">
+    <h4>Add New Ad</h4>
+    <div class="form-group">
+        <label for="AdImage">Upload AD Image</label>
+        <input type="file" id="image" name="AdImage" accept="image/*" required class="file">
+    </div>
+    <div class="form-buttons">
+        <button type="submit" class="btn">Add</button>
+        <button type="reset" class="btn">Reset</button>
+    </div>
+</form>
+<div class="off-background adform" onclick="closeAdForm()"></div>

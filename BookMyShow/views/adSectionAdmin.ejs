@@ -1,0 +1,21 @@
+<div class="adSectionAdmin">
+    <div class="container">
+        <button onclick="openAdForm()" class="btn">
+            Add New Ad
+        </button>
+        <div class="col-12 ads">
+            <% if (Ads.length> 0) { %>
+                <% Ads.map((el)=> { %>
+                    <div class="ad">
+                        <img src="<%= el.AdImage %>" alt="Ad Image">
+                        <button onclick="deleteAd('<%= el.id %>')" class="btn del">
+                            Delete
+                        </button>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No Ads found</p>
+                            <% } %>
+        </div>
+    </div>
+</div>
