@@ -22,6 +22,14 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<script>
+    const Delete = (id) => {
+        window.location.pathname = `/Delete/${id}`
+    }
+    const Edit = (id) => {
+        window.location.pathname = `/Edit/${id}`
+    }
+</script>
 
 <body>
     <%- include('header') %>
@@ -40,7 +48,7 @@
                             <div class="ml-auto text-right">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">View Admin</li>
                                     </ol>
                                 </nav>
@@ -76,15 +84,49 @@
                                             <th scope="col">D.O.B.</th>
                                             <th scope="col">City</th>
                                             <th scope="col">Gender</th>
+                                            <th scope="col">Languages</th>
+                                            <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%adminData?.map((el)=>{ %>
+                                        <%adminData?.map((el,ind)=>{ %>
                                             <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
+                                                <th scope="row">
+                                                    <%=ind + 1 %>
+                                                </th>
+                                                <td><img src="<%=el.profile%>" alt=""
+                                                        style="height: 50px; width: 50px; border-radius: 50%;overflow: hidden;object-fit: contain;">
+                                                </td>
+                                                <td>
+                                                    <%=el.fname%>
+                                                </td>
+                                                <td>
+                                                    <%=el.lname%>
+                                                </td>
+                                                <td>
+                                                    <%=el.email%>
+                                                </td>
+                                                <td>
+                                                    <%=el.password%>
+                                                </td>
+                                                <td>
+                                                    <%=el.dob%>
+                                                </td>
+                                                <td>
+                                                    <%=el.city %>
+                                                </td>
+                                                <td>
+                                                    <%=el.gender%>
+                                                </td>
+                                                <td>
+                                                    <%=el.languages.toString()%>
+                                                </td>
+                                                <td>
+                                                    <button type="button" onclick="Edit('<%=el.id%>')"
+                                                        class="btn btn-primary">Edit</button>
+                                                    <button type="button" onclick="Delete('<%=el.id%>')"
+                                                        class="btn btn-danger">Delete</button>
+                                                </td>
                                             </tr>
                                             <% }) %>
                                     </tbody>

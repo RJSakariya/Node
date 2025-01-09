@@ -1,38 +1,42 @@
-<form class="form-horizontal" action="/addNewAdmin" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="/Update" method="post" enctype="multipart/form-data">
     <div class="card-body">
         <h4 class="card-title">Admin Details</h4>
+        <input type="text" class="form-control" name="id" value="<%=singleAdmin.id%>" hidden>
         <div class="form-group row">
             <label for="fname" class="col-sm-3 text-right control-label col-form-label">First
                 Name</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name Here" required>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name Here"
+                    value="<%=singleAdmin.fname%>" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last
                 Name</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name Here" required>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name Here"
+                    value="<%=singleAdmin.lname%>" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-3 text-right control-label col-form-label">Email</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Here" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Here"
+                    value="<%=singleAdmin.email%>" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="password" class="col-sm-3 text-right control-label col-form-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password Here"
-                    required>
+                    value="<%=singleAdmin.password%>" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="datepicker-autoclose" class="col-sm-3 text-right control-label col-form-label">D.O.B.</label>
             <div class="col-sm-9 input-group">
                 <input type="text" class="form-control" id="datepicker-autoclose" name="dob" placeholder="mm/dd/yyyy"
-                    required>
+                    value="<%=singleAdmin.dob%>" required>
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
@@ -42,7 +46,7 @@
             <label for="city" class="col-sm-3 text-right control-label col-form-label">City</label>
             <div class="col-sm-9">
                 <select class="select2 form-control custom-select" id="city" name="city"
-                    style="width: 100%; height:36px;" required>
+                    style="width: 100%; height:36px;" value="<%=singleAdmin.city%>" required>
                     <option value="Ahemdabad">Ahemdabad</option>
                     <option value="Gandhinager">Gandhinager</option>
                     <option value="Vadodara">Vadodara</option>
@@ -56,11 +60,13 @@
             <label for="gender" class="col-sm-3 text-right control-label col-form-label">Gender</label>
             <div class="col-sm-9">
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="male" name="gender" value="male" required>
+                    <input type="radio" class="custom-control-input" id="male" name="gender" value="male"
+                        <%=singleAdmin.gender==='male' && 'checked' %> required>
                     <label class="custom-control-label" for="male">Male</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="female" name="gender" value="female" required>
+                    <input type="radio" class="custom-control-input" id="female" name="gender" value="female"
+                        <%=singleAdmin.gender==='female' && 'checked' %> required>
                     <label class="custom-control-label" for="female">Female</label>
                 </div>
             </div>
@@ -69,15 +75,18 @@
             <label class="col-sm-3 text-right control-label col-form-label">Languages</label>
             <div class="col-md-9">
                 <div class="custom-control custom-checkbox mr-sm-2">
-                    <input type="checkbox" class="custom-control-input" id="gujarati" name="languages" value="gujarati">
+                    <input type="checkbox" class="custom-control-input" id="gujarati" name="languages" value="gujarati"
+                        <%=singleAdmin.languages.includes('gujarati') && 'checked' %> >
                     <label class="custom-control-label" for="gujarati">Gujarati</label>
                 </div>
                 <div class="custom-control custom-checkbox mr-sm-2">
-                    <input type="checkbox" class="custom-control-input" id="hindi" name="languages" value="hindi">
+                    <input type="checkbox" class="custom-control-input" id="hindi" name="languages" value="hindi"
+                        <%=singleAdmin.languages.includes('hindi') && 'checked' %> >
                     <label class="custom-control-label" for="hindi">Hindi</label>
                 </div>
                 <div class="custom-control custom-checkbox mr-sm-2">
-                    <input type="checkbox" class="custom-control-input" id="english" name="languages" value="english">
+                    <input type="checkbox" class="custom-control-input" id="english" name="languages" value="english"
+                        <%=singleAdmin.languages.includes('english') && 'checked' %> >
                     <label class="custom-control-label" for="english">English</label>
                 </div>
             </div>
@@ -87,7 +96,7 @@
             <div class="col-sm-9">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="validatedCustomFile" accept="image/*"
-                        name="profile" required>
+                        name="profile">
                     <label class="custom-file-label" for="validatedCustomFile">Choose Profile Photo...</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
@@ -96,7 +105,7 @@
     </div>
     <div class="border-top">
         <div class="card-body">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </div>
 </form>
