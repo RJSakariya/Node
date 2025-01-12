@@ -1,0 +1,16 @@
+const express = require('express')
+const route = express.Router()
+const handler = require('../controller/handler')
+const upload = require('../middleware/upload')
+
+route.get('/', handler.loginForm)
+route.post('/login', handler.login)
+route.get('/logout', handler.logout)
+route.get('/dashboard', handler.dashboard)
+route.get('/viewAdmin', handler.viewAdmin)
+route.get('/addAdmin', handler.addAdmin)
+route.post('/addNewAdmin', upload, handler.addNewAdmin)
+route.get('/delete/:id', handler.delete)
+route.get('/edit/:id', handler.edit)
+route.post('/updateAdmin', upload, handler.update)
+module.exports = route
