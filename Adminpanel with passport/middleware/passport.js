@@ -3,7 +3,7 @@ const localStrategy = require('passport-local').Strategy
 const adminSchema = require('../model/adminSchema')
 
 passport.use('local', new localStrategy({ usernameField: 'email' }, async (email, password, done) => {
-    const admin = await adminSchema.findOne({email: email})
+    const admin = await adminSchema.findOne({ email: email })
     if (admin) {
         admin.password === password ? done(null, admin) : done(null, false)
     } else {
@@ -19,8 +19,15 @@ passport.deserializeUser(async (adminId, done) => {
     done(null, admin)
 })
 
+passport.adminInfo = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.locals.admin = req.user
+    }
+    next()
+}
 passport.checkAuth = (req, res, next) => {
     req.isAuthenticated() ? next() : res.redirect('/')
 }
+
 
 module.exports = passport

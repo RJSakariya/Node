@@ -9,10 +9,15 @@ module.exports.login = async (req, res) => {
     res.redirect('/dashboard')
 }
 module.exports.logout = (req, res) => {
-    res.session.destroy()
+    req.session.destroy()
+    res.redirect('/')
 }
 module.exports.home = (req, res) => {
     res.render('index')
+    res.end()
+}
+module.exports.profile = (req, res) => {
+    res.render('profile')
     res.end()
 }
 module.exports.addAdmin = (req, res) => {

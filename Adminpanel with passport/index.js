@@ -12,11 +12,12 @@ app.set('view engine', 'ejs')
 app.use(session({
     name: 'local',
     secret: 'hi',
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     cookie: { maxAge: (100 * 100 * 60) }
 }))
 app.use(passport.session())
+app.use(passport.adminInfo)
 
 app.use(express.urlencoded())
 app.use(express.static(path.join(__dirname, 'public')))
