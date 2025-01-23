@@ -13,9 +13,11 @@ route.get('/dashboard', passport.checkAuth, handler.home)
 route.get('/profile', passport.checkAuth, handler.profile)
 route.get('/addAdmin', passport.checkAuth, handler.addAdmin)
 route.get('/viewAdmin', passport.checkAuth, handler.viewAdmin)
+route.get('/changePassword', passport.checkAuth, handler.changePasswordForm)
 route.post('/addNewAdmin', upload, handler.addNewAdmin)
 route.get('/Delete/:id', handler.Delete)
 route.get('/Edit/:id', handler.Edit)
 route.post('/Update', upload, handler.Update)
+route.post('/changePassword', handler.changePassword)
 
 module.exports = route

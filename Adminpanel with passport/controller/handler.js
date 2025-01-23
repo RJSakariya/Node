@@ -57,3 +57,28 @@ module.exports.Update = async (req, res) => {
         res.redirect('/viewAdmin')
     })
 }
+
+module.exports.changePasswordForm = (req, res) => {
+    res.render('changePassword')
+    res.end()
+}
+
+module.exports.changePassword = async (req, res) => {
+    const admin = req.user
+    const { oldPassword, newPassword, confirmPassword } = req.body
+    if (oldPassword === admin.password) {
+        if (oldPassword !== newPassword) {
+            if (newPassword === confirmPassword) {
+                await adminSchema.findByIdAndUpdate(admin.id, { password: newPassword }).then((user) => {
+                    res.redirect('/logout')
+                })
+            } else {
+                console.log('new password and confirm password must be same')
+            }
+        } else {
+            console.log('old password and new password must be different')
+        }
+    } else {
+        console.log('please write correct old password')
+    }
+}
