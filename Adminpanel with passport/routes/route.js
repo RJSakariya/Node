@@ -19,5 +19,7 @@ route.get('/Delete/:id', handler.Delete)
 route.get('/Edit/:id', handler.Edit)
 route.post('/Update', upload, handler.Update)
 route.post('/changePassword', handler.changePassword)
+route.post('/sendOtp', handler.sendOtp)
+route.post('/forgetPass', handler.forgetPass)
 
 module.exports = route

@@ -86,7 +86,7 @@
                     </div>
                     <div class="row m-t-20">
                         <!-- Form -->
-                        <form class="col-12" action="index.html">
+                        <form class="col-12" method="post" action="/sendOtp">
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -94,14 +94,13 @@
                                             class="ti-email"></i></span>
                                 </div>
                                 <input type="text" class="form-control form-control-lg" placeholder="Email Address"
-                                    aria-label="email" aria-describedby="basic-addon1">
+                                    aria-label="email" aria-describedby="basic-addon1" name="email">
                             </div>
                             <!-- pwd -->
                             <div class="row m-t-20 p-t-20 border-top border-secondary">
                                 <div class="col-12">
-                                    <a class="btn btn-success" href="#" id="to-login" name="action">Back To Login</a>
-                                    <button class="btn btn-info float-right" type="button"
-                                        name="action">Recover</button>
+                                    <a class="btn btn-success" href="/" id="to-login">Back To Login</a>
+                                    <button class="btn btn-info float-right" type="submit">Recover</button>
                                 </div>
                             </div>
                         </form>

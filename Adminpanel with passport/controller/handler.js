@@ -1,11 +1,13 @@
 const adminSchema = require('../model/adminSchema')
 const fs = require('fs')
+const nodemailer = require('../middleware/nodemailer')
 
 module.exports.loginForm = (req, res) => {
     res.render('loginForm')
     res.end()
 }
-module.exports.login = async (req, res) => {
+module.exports.login = (req, res) => {
+    req.flash('success', "Login successfully...");
     res.redirect('/dashboard')
 }
 module.exports.logout = (req, res) => {
@@ -80,5 +82,31 @@ module.exports.changePassword = async (req, res) => {
         }
     } else {
         console.log('please write correct old password')
+    }
+}
+module.exports.sendOtp = async (req, res) => {
+    const admin = await adminSchema.findOne({ email: req.body.email })
+    if (admin) {
+        const otp = Math.floor(1000 + Math.random() * 9000);
+        req.session.adminId = admin._id
+        req.session.otp = otp
+        nodemailer.sendOTP(req.body.email, otp)
+        res.render('forgetPass')
+    } else {
+        res.redirect('/')
+    }
+}
+module.exports.forgetPass = async (req, res) => {
+    const { OTP, newPassword, confirmPassword } = req.body
+    if (req.session.otp == OTP) {
+        if (newPassword === confirmPassword) {
+            await adminSchema.findByIdAndUpdate(req.session.adminId, { password: newPassword }).then((user) => {
+                res.redirect('/logout')
+            })
+        } else {
+            console.log('new password and confirm password must be same')
+        }
+    } else {
+        res.redirect('/')
     }
 }

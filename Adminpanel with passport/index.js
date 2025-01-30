@@ -5,10 +5,16 @@ const path = require('path')
 const database = require('./config/database')
 const session = require('express-session')
 const passport = require('./middleware/passport')
+const flash = require('connect-flash')
+const flashConnect = require('./middleware/flash')
 
 const app = express()
 
 app.set('view engine', 'ejs')
+app.use(express.urlencoded())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use('/Edit', express.static(path.join(__dirname, 'public')))
+app.use('/upload', express.static(path.join(__dirname, 'upload')))
 app.use(session({
     name: 'local',
     secret: 'hi',
@@ -18,11 +24,9 @@ app.use(session({
 }))
 app.use(passport.session())
 app.use(passport.adminInfo)
+app.use(flash())
+app.use(flashConnect.setFlash)
 
-app.use(express.urlencoded())
-app.use(express.static(path.join(__dirname, 'public')))
-app.use('/Edit', express.static(path.join(__dirname, 'public')))
-app.use('/upload', express.static(path.join(__dirname, 'upload')))
 app.use('/', route)
 
 app.listen(port, (err) => err ? console.log(err) : console.log('Server Started...'))
