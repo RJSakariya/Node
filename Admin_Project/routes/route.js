@@ -1,0 +1,23 @@
+const express = require('express')
+const route = express.Router()
+const handler = require('../controller/handler')
+const upload = require('../middleware/upload')
+const passport = require("../middleware/passportcheck")
+
+route.get('/', handler.loginForm)
+route.post('/login', passport.authenticate('local', { failureRedirect: '/' }), handler.login)
+route.get('/logout', handler.logout)
+route.get('/dashboard', passport.checkAuth, handler.dashboard)
+route.get('/viewAdmin', passport.checkAuth, handler.viewAdmin)
+route.get('/addAdmin', passport.checkAuth, handler.addAdmin)
+route.post('/addNewAdmin', upload, handler.addNewAdmin)
+route.get('/delete/:id', handler.delete)
+route.get('/edit/:id', passport.checkAuth, handler.edit)
+route.post('/updateAdmin', upload, handler.update)
+route.get('/changePassword', passport.checkAuth, handler.changePasswordForm)
+route.post('/changePassword', handler.changePassword)
+route.get('/forget', handler.sendOTP)
+route.post('/sendOtp', handler.sendOtp)
+route.post('/forgetPass', handler.forgetPass)
+
+module.exports = route

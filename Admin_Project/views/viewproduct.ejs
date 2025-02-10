@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+    <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+
+<style>
+    .table-container {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" style="padding: 10px;">
+        <%- include('./parsials/sidebar')%>
+            <div class="body-wrapper">
+                <%- include('./parsials/header')%>
+                    <div class="container" style="padding: 10px;">
+                        <h5 class="fw-semibold mb-4">Product</h5>
+                        <div class="table-responsive table-container">
+                            <table class="table table-bordered table-striped">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Product Price</th>
+                                        <th scope="col">Product Description </th>
+                                        <th scope="col">Sub Category</th>
+                                        <th scope="col">Category </th>
+                                        <th scope="col">Category Image</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map((e, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td>
+                                                <%= e.productname %>
+                                            </td>
+                                            <td>
+                                                <%= e.productprice %>
+                                            </td>
+                                            <td>
+                                                <%= e.productdescription %>
+                                            </td>
+                                            <td>
+                                                <%= e.subcategoryid.subcategory %>
+                                            </td>
+                                            <td>
+                                                <%= e.subcategoryid.categoryid.category %>
+                                            </td>
+                                            <td>
+                                                <img src="/<%= e.subcategoryid.categoryid.img %>" alt="" width="70px">
+                                            </td>
+                                            <td>
+                                                <a href="/product/edit?id=<%= e.id %>" ><Button class="btn btn-primary px-4">
+                                                        Edit
+                                                    </Button>
+                                                </a>
+                                                <a href="/product/delete?id=<%= e.id %>"><Button class="btn btn-danger px-4">
+                                                        Delete
+                                                    </Button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+    </div>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

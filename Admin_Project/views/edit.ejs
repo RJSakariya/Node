@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+<style>
+  .edit-admin-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+
+  .form-check-label {
+    margin-left: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    /* color: #6c757d; */
+  }
+</style>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <%- include('./parsials/sidebar')%>
+      <!--  Sidebar End -->
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <%- include('./parsials/header')%>
+          <div class="container-fluid mt-5">
+            <div class="card col-xs-12 col-sm-8 col-md-6 shadow-sm p-4 rounded edit-admin-card">
+              <div class="card-body">
+                <h5 class="card-title fw-bold text-primary mb-2">Edit Admin</h5>
+                <form class="form-horizontal" action="/updateAdmin" method="post" enctype="multipart/form-data">
+                  <div class="card-body">
+                    <h4 class="card-title ">Admin Details</h4>
+                    <div class="form-group row mb-3">
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="id" name="id" placeholder="ID" required
+                          value="<%=admin.id%>" hidden>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="fname" class="col-sm-3 col-form-label ">First Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name Here"
+                          required value="<%= admin.fname%>">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="lname" class="col-sm-3 col-form-label ">Last Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name Here"
+                          required value="<%= admin.lname%>">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="email" class="col-sm-3 col-form-label ">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Here"
+                          required value="<%= admin.email%>">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="password" class="col-sm-3 col-form-label ">Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password" name="password"
+                          placeholder="Password Here" value="<%= admin.password%>">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="datepicker-autoclose" class="col-sm-3 col-form-label ">D.O.B.</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="datepicker-autoclose" name="dob"
+                          placeholder="mm/dd/yyyy" required value="<%=admin.dob%>">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="city" class="col-sm-3 col-form-label ">City</label>
+                      <div class="col-sm-9">
+                        <select class="form-select" id="city" name="city" required>
+                          <option value="Ahemdabad" <%=admin.city==='Ahemdabad' ? 'selected' : '' %>>Ahemdabad</option>
+                          <option value="Gandhinager" <%=admin.city==='Gandhinager' ? 'selected' : '' %>>Gandhinager
+                          </option>
+                          <option value="Vadodara" <%=admin.city==='Vadodara' ? 'selected' : '' %>>Vadodara</option>
+                          <option value="Rajkot" <%=admin.city==='Rajkot' ? 'selected' : '' %>>Rajkot</option>
+                          <option value="Jamnager" <%=admin.city==='Jamnager' ? 'selected' : '' %>>Jamnager</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label for="gender" class="col-sm-3 col-form-label ">Gender</label>
+                      <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" id="male" name="gender" value="male"
+                            <%=admin.gender==='male' && 'checked' %>>
+                          <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" id="female" name="gender" value="female"
+                            <%=admin.gender==='female' && 'checked' %>>
+                          <label class="form-check-label" for="female">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label class="col-sm-3 col-form-label ">Languages</label>
+                      <div class="col-sm-9">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="gujarati" name="languages"
+                            value="gujarati" <%=admin.languages.includes('gujarati') ? 'checked' : '' %>>
+                          <label class="form-check-label" for="gujarati">Gujarati</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="hindi" name="languages" value="hindi"
+                            <%=admin.languages.includes('hindi') ? 'checked' : '' %>>
+                          <label class="form-check-label" for="hindi">Hindi</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="english" name="languages" value="english"
+                            <%=admin.languages.includes('english') ? 'checked' : '' %>>
+                          <label class="form-check-label" for="english">English</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                      <label class="col-sm-3 col-form-label ">Profile Photo</label>
+                      <div class="col-sm-9">
+                        <input type="file" class="form-control" id="validatedCustomFile" accept="image/*" name="img">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-top pt-3">
+                    <div class="card-body text-end">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-6 px-6 text-center">
+            <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
+                class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
+                href="https://themewagon.com/" target="_blank"
+                class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+          </div>
+      </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
