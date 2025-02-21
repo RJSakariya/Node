@@ -12,5 +12,7 @@ adminRoute.post("/ChangePassword", authentication, adminController.adminChangePa
 adminRoute.post("/ForgotPassword", adminController.forgotPassword);
 adminRoute.delete("/Delete", authentication, adminController.deleteAdmin);
 adminRoute.put("/Update", authentication, upload, adminController.updateAdmin);
+adminRoute.delete("/DeleteManager", authentication, adminController.deleteManager);
+adminRoute.delete("/DeleteEmployee", authentication, adminController.deleteManager);
 
 module.exports = adminRoute;

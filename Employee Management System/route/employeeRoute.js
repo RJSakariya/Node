@@ -12,7 +12,6 @@ employeeRoute.get("/profile", authentication, employeeController.employeeProfile
 employeeRoute.post("/changePassword", authentication, employeeController.employeeChangePassword);
 employeeRoute.post("/forgotPassword", employeeController.forgotPassword);
 employeeRoute.post("/resetPassword", employeeController.resetPassword);
-employeeRoute.delete("/delete", authentication, checkAdminOrManager, employeeController.deleteEmployee);
 employeeRoute.put("/update", authentication, upload, employeeController.updateEmployee);
 
 module.exports = employeeRoute;

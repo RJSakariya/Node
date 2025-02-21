@@ -39,15 +39,6 @@ module.exports.employeeLogin = async (req, res) => {
     }
 }
 
-module.exports.deleteEmployee = async (req, res) => {
-    await employeeSchema.findByIdAndDelete(req.query.id).then((data) => {
-        if (fs.existsSync(data.image)) {
-            fs.unlinkSync(data.image);
-        }
-        res.status(200).json({ message: "This employee is Deleted", data });
-    });
-}
-
 module.exports.updateEmployee = async (req, res) => {
     if (req.user.employeeData._id !== req.query.id) {
         return res.status(403).json({ message: "Access denied. You can only update your own profile." });

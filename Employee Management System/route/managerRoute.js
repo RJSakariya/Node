@@ -11,7 +11,6 @@ managerRoute.get("/List", authentication, checkAdminOrManager, managerController
 managerRoute.get("/Profile", authentication, managerController.managerProfile);
 managerRoute.post("/ChangePassword", authentication, managerController.managerChangePassword);
 managerRoute.post("/forgotPassword", managerController.forgotPassword);
-managerRoute.delete("/Delete", authentication, checkAdminOrManager, managerController.deleteManager);
 managerRoute.put("/Update", authentication, upload, managerController.updateManager);
 
 module.exports = managerRoute;
