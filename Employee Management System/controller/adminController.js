@@ -28,7 +28,7 @@ module.exports.adminLogin = async (req , res) => {
         return res.status(200).json({ message: "Admin Not Found" });
     }
     if (await bcryptjs.compare(req.body.adminPassword, admin.adminPassword)) {
-        let token = jwt.sign({ adminData: admin }, "employee000", { expiresIn: "1h" });
+        let token = jwt.sign({ adminData: admin }, "employeemanagementissecure", { expiresIn: "1h" });
         res.status(200).json({ message: "Admin Log In", token: token });
         console.log(token);
     } else {

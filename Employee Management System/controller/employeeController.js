@@ -27,7 +27,7 @@ module.exports.employeeLogin = async (req, res) => {
         return res.status(200).json({ message: "employee Not Found" });
     }
     if (await bcryptjs.compare(req.body.employeePassword, employee.employeePassword)) {
-        let token = jwt.sign({ employeeData: employee }, "employee000", { expiresIn: "1h" });
+        let token = jwt.sign({ employeeData: employee }, "employeemanagementissecure", { expiresIn: "1h" });
         res.status(200).json({ message: "employee Log In", token: token });
     } else {
         res.status(200).json({ message: "Password is wrong" });

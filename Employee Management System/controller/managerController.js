@@ -27,7 +27,7 @@ module.exports.managerLogin = async (req, res) => {
         return res.status(200).json({ message: "Manager Not Found" });
     }
     if (await bcryptjs.compare(req.body.managerPassword, manager.managerPassword)) {
-        let token = jwt.sign({ managerData: manager }, "employee000", { expiresIn: "1h" });
+        let token = jwt.sign({ managerData: manager }, "employeemanagementissecure", { expiresIn: "1h" });
         res.status(200).json({ message: "Manager Log In", token: token });
     } else {
         res.status(200).json({ message: "Password is wrong" });

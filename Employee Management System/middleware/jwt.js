@@ -7,7 +7,7 @@ const authentication = (req , res , next) => {
     }
 
     let newToken = token.slice(7 , token.length);
-    let decode =  jwt.verify(newToken,"employeemanegementissecure")
+    let decode =  jwt.verify(newToken,"employeemanagementissecure")
     req.user = decode;
     next();
 }
