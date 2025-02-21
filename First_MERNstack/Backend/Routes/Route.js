@@ -2,9 +2,7 @@ const express = require('express')
 const route = express.Router()
 const handler = require('../controller/handler')
 
-route.post('/',handler.addData)
-route.get('/', handler.viewData)
-route.put('/', handler.updateData)
-route.delete('/', handler.deleteData)
+route.post('/signup', handler.signup)
+route.post('/login', handler.login)
 
 module.exports = route

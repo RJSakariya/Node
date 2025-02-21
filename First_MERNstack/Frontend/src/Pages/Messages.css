@@ -1,0 +1,150 @@
+.messages-container {
+  padding: 16px;
+  max-width: 450px;
+  width: 100%;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.messages-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.messages-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 75%;
+  word-wrap: break-word;
+  font-size: 14px;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-message {
+  background-color: #3b82f6;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
+.other-message {
+  background-color: #e5e7eb;
+  color: black;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.other-message .message-sender {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 4px;
+  display: block;
+  text-align: left;
+}
+
+.user-message div{
+}
+.user-message .message-sender {
+  font-size: 12px;
+  color: #bac9e4;
+  margin-top: 4px;
+  display: block;
+  text-align: left;
+}
+
+.delete-button {
+  max-width: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.delete-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: red;
+  transition: stroke 0.1s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.delete-button:hover svg {
+  stroke: darkred;
+  transform: scale(1.1);
+}
+
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  transition: border 0.3s;
+}
+
+.message-input:focus {
+  border-color: #3b82f6;
+}
+
+.send-button {
+  width: 50px;
+  min-width: 50px;
+  margin-left: 10px;
+  padding: 12px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.send-button:hover {
+  background: #2563eb;
+}
+
+.send-button svg {
+  width: 20px;
+  height: 20px;
+}
