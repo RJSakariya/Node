@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/public', express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')))
-app.use("/", adminRoute);
+app.use("/admin", adminRoute);
 app.use("/manager", managerRoute);
 app.use("/employee" , employeeRoute);
 

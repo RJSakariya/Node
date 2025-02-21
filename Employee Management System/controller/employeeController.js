@@ -15,7 +15,12 @@ module.exports.employeeRegister = async (req, res) => {
     req.body.employeePassword = await bcryptjs.hash(req.body.employeePassword, 10);
     req.body.managerId = req.user.managerData._id; 
     await employeeSchema.create(req.body).then(async (data) => {
-        const populatedData = await employeeSchema.findById(data._id).populate('managerId');
+        const populatedData = await employeeSchema.findById(data._id).populate({
+            path:'managerId',
+            populate:{
+                path:'adminId'
+            }
+        });
         res.status(200).json({ message: "employee Created Successfully", data: populatedData });
     });
 }
@@ -34,7 +39,7 @@ module.exports.employeeLogin = async (req, res) => {
     }
 }
 
-module.exports.deleteemployee = async (req, res) => {
+module.exports.deleteEmployee = async (req, res) => {
     await employeeSchema.findByIdAndDelete(req.query.id).then((data) => {
         if (fs.existsSync(data.image)) {
             fs.unlinkSync(data.image);
@@ -43,7 +48,7 @@ module.exports.deleteemployee = async (req, res) => {
     });
 }
 
-module.exports.updateemployee = async (req, res) => {
+module.exports.updateEmployee = async (req, res) => {
     if (req.user.employeeData._id !== req.query.id) {
         return res.status(403).json({ message: "Access denied. You can only update your own profile." });
     }
