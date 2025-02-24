@@ -36,7 +36,9 @@
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         ul.task-list li ul {
@@ -45,11 +47,18 @@
         }
 
         ul.task-list li ul li {
-            padding: 5px 0;
+            padding: 2px 0;
         }
 
         strong {
             color: #555;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         nav {
@@ -67,20 +76,27 @@
 
 <body>
     <%- include('navbar') %>
-    <div class="container">
-        <h1>My Tasks</h1>
-        <ul class="task-list">
-            <% tasks.map(task => { %>
-                <li>
-                    <ul>
-                        <li><strong>Name:</strong> <%= task.name %></li>
-                        <li><strong>Status:</strong> <%= task.status %></li>
-                        <li><strong>User Name:</strong> <%= task.user.name %></li>
-                    </ul>
-                </li>
-            <% }) %>
-        </ul>
-    </div>
+        <div class="container">
+            <h1>My Tasks</h1>
+            <ul class="task-list">
+                <% tasks.map(task=> { %>
+                    <li>
+                        <ul>
+                            <li><strong>Name:</strong>
+                                <%= task.name %>
+                            </li>
+                            <li><strong>Status:</strong>
+                                <%= task.status %>
+                            </li>
+                            <li><strong>User Name:</strong>
+                                <%= task.user.name %>
+                            </li>
+                            <a href="/tasks/delete/<%= task._id %>"><button class="btn btn-danger">Delete</button></a>
+                        </ul>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
 </body>
 
 </html>

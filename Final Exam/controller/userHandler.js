@@ -12,7 +12,7 @@ module.exports.register = async (req, res) => {
         const user = await userSchema.create({ ...req.body, password: hashedPassword });
         const token = jwt.sign({ user }, 'taskmanagerissecure', { expiresIn: '1h' });
         res.cookie('token', token);
-        res.redirect('/task');
+        res.redirect('/tasks');
     } catch (err) {
         res.status(500).send('Registration failed.');
     }
@@ -29,7 +29,7 @@ module.exports.login = async (req, res) => {
             if (await bcrypt.compare(req.body.password, user.password)) {
                 const token = jwt.sign({ user }, 'taskmanagerissecure', { expiresIn: '1h' });
                 res.cookie('token', token);
-                res.redirect('/task');
+                res.redirect('/tasks');
             } else {
                 res.redirect('/login');
             }
