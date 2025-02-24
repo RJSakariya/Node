@@ -3,11 +3,11 @@ const express = require('express')
 const port = 2000
 const app = express()
 const database = require('./config/database')
-const cookie = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 app.use(express.urlencoded())
+app.use(cookieParser());
 app.set('view engine', 'ejs')
-app.use(cookie())
 
 app.use('/', require('./routes/userRoute'))
 app.use('/task', require('./routes/taskRoute'))
