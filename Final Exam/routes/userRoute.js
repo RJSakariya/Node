@@ -4,5 +4,6 @@ const handler = require('../controller/userHandler')
 
 route.get('/', handler.registerPage)
 route.get('/login', handler.loginPage)
-
+route.post('/register', handler.register)
+route.post('/login', handler.login)
 module.exports = route
