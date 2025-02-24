@@ -10,7 +10,7 @@ app.set('view engine', 'ejs')
 app.use(cookie())
 
 app.use('/', require('./routes/userRoute'))
-app.use('/task', require('./routes/userRoute'))
+app.use('/task', require('./routes/taskRoute'))
 
 
 app.listen(port, (err) => err ? console.log(err) : console.log("server started on port: ", port))

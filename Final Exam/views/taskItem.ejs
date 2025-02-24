@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Items</title>
 </head>
+
 <body>
-    <div>
-        <h1>Task Items</h1>
-        <ul>
-            <% tasks.forEach(task => { %>
-                <li>
-                    <ul>
-                        <li><strong>Name:</strong> <%= task.name %></li>
-                        <li><strong>Status:</strong> <%= task.status %></li>
-                        <li><strong>User Name:</strong> <%= task.user.name %></li>
-                    </ul>
-                </li>
-            <% }) %>
-        </ul>
-    </div>
+    <%-include('navbar')%>
+        <div>
+            <h1>Task Items</h1>
+            <ul>
+                <% tasks.forEach(task=> { %>
+                    <li>
+                        <ul>
+                            <li><strong>Name:</strong>
+                                <%= task.name %>
+                            </li>
+                            <li><strong>Status:</strong>
+                                <%= task.status %>
+                            </li>
+                            <li><strong>User Name:</strong>
+                                <%= task.user.name %>
+                            </li>
+                        </ul>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
 </body>
+
 </html>
