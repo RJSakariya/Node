@@ -5,30 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul.task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.task-list li {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ul.task-list li ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.task-list li ul li {
+            padding: 5px 0;
+        }
+
+        strong {
+            color: #555;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <%-include('navbar')%>
-        <div>
-            <h1>Task Items</h1>
-            <ul>
-                <% tasks.forEach(task=> { %>
-                    <li>
-                        <ul>
-                            <li><strong>Name:</strong>
-                                <%= task.name %>
-                            </li>
-                            <li><strong>Status:</strong>
-                                <%= task.status %>
-                            </li>
-                            <li><strong>User Name:</strong>
-                                <%= task.user.name %>
-                            </li>
-                        </ul>
-                    </li>
-                    <% }) %>
-            </ul>
-        </div>
+    <%- include('navbar') %>
+    <div class="container">
+        <h1>My Tasks</h1>
+        <ul class="task-list">
+            <% tasks && tasks.map(task => { %>
+                <li>
+                    <ul>
+                        <li><strong>Name:</strong> <%= task.name %></li>
+                        <li><strong>Status:</strong> <%= task.status %></li>
+                        <li><strong>User Name:</strong> <%= task.user.name %></li>
+                    </ul>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 
 </html>
