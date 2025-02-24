@@ -13,5 +13,5 @@ const schema = mongoose.Schema({
         required : true
     }
 })
-const userSchema = mongoose.model('/user',schema)
+const userSchema = mongoose.model('User',schema)
 module.exports = userSchema

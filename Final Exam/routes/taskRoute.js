@@ -5,5 +5,6 @@ const check = require('../middleware/jwtChecker')
 
 route.get('/', check.check, handler.viewTask)
 route.get('/taskForm', check.check, handler.taskForm)
+route.post('/add', check.check, handler.add)
 
 module.exports = route

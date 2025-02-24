@@ -10,9 +10,9 @@ const schema = mongoose.Schema({
     },
     user:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:'user',
+        ref:'User',
         required: true
     }
 })
-const userSchema = mongoose.model('/task', schema)
+const userSchema = mongoose.model('Task', schema)
 module.exports = userSchema

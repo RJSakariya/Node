@@ -42,6 +42,6 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.signOut = (req, res) => {
-    cookie.destroy()
+    res.clearCookie('token')
     res.redirect('/')
 }

@@ -8,7 +8,7 @@ module.exports.check = (req, res, next) => {
 
     try {
         const data = jwt.verify(token, "taskmanagerissecure");
-        req.user = data;
+        req.user = data.user;
         next();
     } catch (error) {
         console.error('JWT verification failed:', error);
